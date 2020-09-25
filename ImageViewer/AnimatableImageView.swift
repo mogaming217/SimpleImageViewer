@@ -74,6 +74,10 @@ private extension AnimatableImageView {
         case .bottomRight:
             imageView.bounds = Utilities.rect(forSize: image.size)
             imageView.center = Utilities.bottomRight(forSize: image.size, insideSize: bounds.size)
+        @unknown default:
+            // same as scale aspect fit
+            imageView.bounds = Utilities.aspectFitRect(forSize: image.size, insideRect: bounds)
+            imageView.center = Utilities.center(forSize: bounds.size)
         }
     }
 }
